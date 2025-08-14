@@ -44,7 +44,7 @@ export default function AboutSection() {
 
     return (
         <section ref={sectionRef} className='py-20 content space-y-16' id='about'>
-            <div className='w-fit border border-[#CFCFC6] mx-auto px-4 pb-2 '>
+            <div className='w-fit border border-[#CFCFC6] mx-auto px-4 py-2 '>
                 <h3>WHAT IS <span>TIER</span> XERO?</h3>
             </div>
             <div className='grid md:grid-cols-5 items-center max-w-5xl mx-auto gap-10'>

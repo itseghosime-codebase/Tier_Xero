@@ -63,7 +63,7 @@ export default function Contact() {
     return (
         <section ref={sectionRef} className='badg relative bg-[#161616]' id='get_started'>
             <div className='py-24 space-y-14 content relative z-10'>
-                <div className='w-fit border border-[#CFCFC6] mx-auto px-4 pb-2 '>
+                <div className='w-fit border border-[#CFCFC6] mx-auto px-4 py-2 '>
                     <h3>LETS <span>GET STARTED</span></h3>
                 </div>
                 <div className='grid md:grid-cols-2 items-center max-w-6xl mx-auto gap-10'>
