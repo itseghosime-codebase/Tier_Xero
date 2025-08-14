@@ -11,7 +11,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 export default function ServiceSection() {
-    const [activeService, setActiveService] = React.useState<number>(0)
+    const [activeService, setActiveService] = React.useState<number | null>(null);
+
+    const currentServiceIndex = activeService ?? 0;
+
     const sectionRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -59,8 +62,15 @@ export default function ServiceSection() {
                             {serviceList.map((service, index) => (
                                 <div key={index}>
                                     <button
-                                        onClick={() => setActiveService(index)}
-                                        className={`service-button flex items-center justify-between w-full text-3xl md:text-4xl lg:text-5xl font-mono font-normal border-b ${activeService === index ? 'border-[#B49C52] text-[#B49C52]' : 'border-[#CFCFC6] text-[#CFCFC6]'} pb-2`}>
+                                        onClick={() =>
+                                            setActiveService(
+                                                activeService === index ? null : index
+                                            )
+                                        }
+                                        className={`service-button flex items-center justify-between w-full text-3xl border-b
+                                        md:text-4xl lg:text-5xl ${!activeService && index === 0 ? 'xl:border-[#B49C52] xl:text-[#B49C52]' : ''} font-mono font-normal 
+                                         ${activeService === index ? 'border-[#B49C52] text-[#B49C52]' :
+                                                'border-[#CFCFC6] text-[#CFCFC6]'} pb-2`}>
                                         <p>{service.heading}</p>
                                         <MdArrowOutward className='mt-5' />
                                     </button>
@@ -100,17 +110,17 @@ export default function ServiceSection() {
                             <div className='flex flex-col md:flex-row items-center justify-between h-full gap-10 md:gap-16'>
                                 <div className="serviceListing">
                                     <h4 className="md:rotate-[-90deg] -mt-4 text-4xl md:text-5xl xl:text-7xl whitespace-nowrap font-mono font-normal text-[#B49C52]">
-                                        {serviceList[activeService].heading}
+                                        {serviceList[currentServiceIndex].heading}
                                     </h4>
                                 </div>
 
                                 <div className='space-y-8'>
                                     <p
                                         className="font-sans text-sm md:text-base lg:text-lg tracking-wide font-medium"
-                                        dangerouslySetInnerHTML={{ __html: serviceList[activeService].description }}
+                                        dangerouslySetInnerHTML={{ __html: serviceList[currentServiceIndex].description }}
                                     />
                                     <div className='space-y-5'>
-                                        {serviceList[activeService].listing.map((item, index) => (
+                                        {serviceList[currentServiceIndex].listing.map((item, index) => (
                                             <div key={index} className='space-y-3'>
                                                 <div className='flex items-baseline gap-7 lg:gap-10'>
                                                     <div className='relative h-full flex items-center justify-center px-5 py-3 after:absolute after:top-0 after:right-0 after:h-5 after:w-5 after:border-2 after:border-b-0 after:border-l-0 after:border-[#B49C52]

@@ -132,7 +132,7 @@ export default function ContactForm() {
                         <FormItem>
                             <FormLabel className="text-lg">Website URL (if available)</FormLabel>
                             <FormControl>
-                                <Input className="border-0 border-b rounded-none " {...field} />
+                                <Input placeholder="https://website.com" className="border-0 border-b rounded-none " {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
