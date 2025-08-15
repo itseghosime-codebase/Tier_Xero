@@ -10,10 +10,18 @@ import { Menu, X } from "lucide-react";
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [active, setActive] = useState("#home");
+    const [scrolled, setScrolled] = useState(false);
 
-    // Detect scroll to highlight active section
+    // Detect scroll for both active section & scrolled state
     useEffect(() => {
         const handleScroll = () => {
+            // Toggle scrolled state
+            if (window.scrollY > 0) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+
             // If active is #get_started, don't override
             if (active === "#get_started") return;
 
@@ -35,9 +43,10 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [active]);
 
-
     return (
-        <nav className="fixed inset-x-0 top-0 z-50 content py-5 md:py-10 flex items-center justify-between gap-3 lg:gap-5 bg-gradient-to-b from-black to-transparent px-5 md:px-10">
+        <nav
+            className={`fixed inset-x-0 top-0 z-50 content py-5 md:py-10 flex items-center justify-center gap-3 lg:gap-5 px-5 md:px-10 transition-all duration-300`}
+        >
             {/* Logo */}
             <div className="shrink-0 relative z-20">
                 <Image
@@ -57,7 +66,7 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Menu */}
-            <ul className="pt-3 pb-5 px-5 lg:px-10 rounded-full bg-[#1D1D1D] border border-[#5D5D5D] w-fit items-center gap-10 font-mono text-lg lg:text-xl font-semibold hidden md:flex">
+            <ul className={`pt-3 pb-5 px-5 lg:px-10 rounded-full bg-[#1D1D1D] ${scrolled ? 'mx-auto' : 'mx-auto'} transition-all duration-300 ease-in-out border border-[#5D5D5D] w-fit items-center gap-10 font-mono text-lg lg:text-xl font-semibold hidden md:flex`}>
                 {LinkTags.map((links, id) => (
                     <li key={id}>
                         <Link
@@ -82,7 +91,6 @@ export default function Navbar() {
                 GET STARTED
             </Link>
 
-
             {/* Mobile Menu Button */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -106,7 +114,7 @@ export default function Navbar() {
                             : "hover:text-[#B49C52]"
                             }`}
                         onClick={() => {
-                            setActive(links.href)
+                            setActive(links.href);
                             setIsOpen(false);
                         }}
                     >
@@ -116,7 +124,7 @@ export default function Navbar() {
                 <Link
                     href={"#get_started"}
                     onClick={() => {
-                        setActive('#get_started');
+                        setActive("#get_started");
                         setIsOpen(false);
                     }}
                     className={`transition-colors ease-in duration-200 text-2xl w-full font-mono font-semibold ${active === "#get_started"
