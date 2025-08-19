@@ -45,7 +45,7 @@ export default function Navbar() {
 
     return (
         <nav
-            className={`fixed inset-x-0 top-0 z-50 content py-5 md:py-10 flex items-center justify-center gap-3 lg:gap-5 px-5 md:px-10 transition-all duration-300`}
+            className={`fixed inset-x-0 top-0 z-50 content py-5 md:py-10 flex items-center justify-between gap-3 lg:gap-5 px-5 md:px-10 transition-all duration-300`}
         >
             {/* Logo */}
             <div className="shrink-0 relative z-20">

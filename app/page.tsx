@@ -1,4 +1,5 @@
 import AboutSection from "@/components/AboutSection";
+import CarouselSlide from "@/components/CarouselSlide";
 import Contact from "@/components/Contact";
 import HerSection from "@/components/HeroSection";
 import ServiceSection from "@/components/ServiceSection";
@@ -9,6 +10,7 @@ export default function Home() {
       <HerSection />
       <ServiceSection />
       <AboutSection />
+      <CarouselSlide />
       <Contact />
     </main>
   );
