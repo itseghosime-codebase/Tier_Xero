@@ -56,6 +56,8 @@ p {
 }
 
 h3 {
+  line-height: 1;
+  transform: translateY(-7px);
   @apply font-mono font-bold text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl lg:-mt-3 xl:-mt-5 leading-[1];
 }
 
@@ -186,24 +188,7 @@ body {
   height: auto;
 }
 
-/* .image-container::before,
-.image-container::after {
-  content: "";
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background: #0d0d0d;
-  z-index: 1;
+.text {
+  line-height: 1;
+  transform: translateY(-5px);
 }
-
-.image-container::before {
-  top: 0;
-  left: 0;
-  clip-path: polygon(0 0, 100% 0, 0 100%);
-}
-
-.image-container::after {
-  bottom: 0;
-  right: 0;
-  clip-path: polygon(100% 0, 100% 100%, 0 100%);
-} */

@@ -48,30 +48,32 @@ export default function Navbar() {
             className={`fixed inset-x-0 top-0 z-50 content py-5 md:py-10 flex items-center justify-between gap-3 lg:gap-5 px-5 md:px-10 transition-all duration-300`}
         >
             {/* Logo */}
-            <div className="shrink-0 relative z-20">
-                <Image
-                    src={Logo}
-                    alt="Tier Xero Logo"
-                    sizes="100%"
-                    className="md:h-10 lg:h-16 w-auto hidden md:block"
-                />
-                <div className="py-3 px-5 rounded-full bg-[#1D1D1D] border border-[#5D5D5D] w-fit md:hidden">
+            <Link href={'/'}>
+                <div className="shrink-0 relative z-20">
                     <Image
-                        src={LogoSmall}
-                        alt="Tier Xero Logo Mobile"
+                        src={Logo}
+                        alt="Tier Xero Logo"
                         sizes="100%"
-                        className="h-8 w-auto"
+                        className="md:h-10 lg:h-16 w-auto hidden md:block"
                     />
+                    <div className="py-3 px-5 rounded-full bg-[#1D1D1D] border border-[#5D5D5D] w-fit md:hidden">
+                        <Image
+                            src={LogoSmall}
+                            alt="Tier Xero Logo Mobile"
+                            sizes="100%"
+                            className="h-8 w-auto"
+                        />
+                    </div>
                 </div>
-            </div>
+            </Link>
 
             {/* Desktop Menu */}
-            <ul className={`pt-3 pb-5 px-5 lg:px-10 rounded-full bg-[#1D1D1D] ${scrolled ? 'mx-auto' : 'mx-auto'} transition-all duration-300 ease-in-out border border-[#5D5D5D] w-fit items-center gap-10 font-mono text-lg lg:text-xl font-semibold hidden md:flex`}>
+            <ul className={`pb-5 pt-3 px-5 lg:px-10 text-lg lg:text-xl text rounded-full bg-[#1D1D1D] ${scrolled ? 'mx-auto' : 'mx-auto'} transition-all duration-300 ease-in-out border border-[#5D5D5D] w-fit items-center gap-x-10 font-mono font-semibold hidden md:flex`}>
                 {LinkTags.map((links, id) => (
                     <li key={id}>
                         <Link
                             href={links.href}
-                            className={`transition-colors ease-in duration-200 ${active === links.href && active !== "#get_started"
+                            className={`text transition-colors ease-in duration-200 ${active === links.href && active !== "#get_started"
                                 ? "text-[#B49C52]"
                                 : "hover:text-[#B49C52]"
                                 }`}
@@ -86,7 +88,7 @@ export default function Navbar() {
             <Link
                 href={"#get_started"}
                 onClick={() => setActive("#get_started")}
-                className="pt-3 pb-5 px-5 rounded-full bg-[#1D1D1D] border border-[#5D5D5D] w-fit font-mono text-lg lg:text-xl font-semibold hidden md:block transition-colors ease-in duration-200 text-[#B49C52] hover:text-[#CFCFC6]"
+                className="pb-5 pt-3 text px-5 rounded-full bg-[#1D1D1D] border border-[#5D5D5D] w-fit font-mono text-lg lg:text-xl font-semibold hidden md:block transition-colors ease-in duration-200 text-[#B49C52] hover:text-[#CFCFC6]"
             >
                 GET STARTED
             </Link>
