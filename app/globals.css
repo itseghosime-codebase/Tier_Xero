@@ -58,7 +58,7 @@ p {
 h3 {
   line-height: 1;
   transform: translateY(-5px);
-  @apply font-mono font-bold text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl lg:-mt-3 xl:-mt-5 leading-[1];
+  @apply font-mono font-bold text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1];
 }
 
 :root {
